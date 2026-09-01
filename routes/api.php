@@ -3,8 +3,12 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use Liberu\Foundation\WebhooksApi\Http\Controllers\StatusController;
+use Liberu\Webhooks\Api\Http\Controllers\WebhooksController;
 
-Route::prefix('api/v1/webhooks')->middleware('api')->group(function (): void {
-    Route::get('/status', StatusController::class)->name('webhooks-api.status');
+Route::prefix('api/v1/webhooks')->middleware(['auth:sanctum', 'throttle:60,1'])->group(function (): void {
+    Route::get('/', [WebhooksController::class, 'index']);
+    Route::post('/', [WebhooksController::class, 'store']);
+    Route::post('/{endpoint}/rotate-secret', [WebhooksController::class, 'rotate']);
+    Route::get('/{endpoint}/deliveries', [WebhooksController::class, 'deliveries']);
+    Route::post('/{endpoint}/deliveries/{delivery}/replay', [WebhooksController::class, 'replay']);
 });
