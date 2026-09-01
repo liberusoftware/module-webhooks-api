@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Liberu\Foundation\WebhooksApi;
+namespace Liberu\Webhooks\Api;
 
 use Illuminate\Support\ServiceProvider;
 
