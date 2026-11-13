@@ -3,7 +3,7 @@
   "name": "webhooks-api",
   "display_name": "Webhooks API",
   "description": "Authenticated webhook endpoint registration, delivery evidence, rotation, and replay.",
-  "version": "1.0.1",
+  "version": "0.1.0",
   "category": "presentation",
   "provider": "Liberu\\Webhooks\\Api\\WebhooksApiServiceProvider",
   "requires": {
